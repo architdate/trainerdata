@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Trainer Data Generator</title>
+  
+  <style type="text/css" media="screen">
+    body {font-family:verdana, sans-serif; color:#666; background:#fafafa; padding:20px; text-align:center;}
+    #page {text-align:left; max-width:600px; margin:0 auto;} 
+    h1 {font-size:16px; font-weight:normal; text-align:center;}
+    label {font-size:16px;}
+    label i {font-style:normal; display:inline-block; text-align:right; width:100px;}
+    label textarea {vertical-align:top;}
+    button {margin-left:105px; padding:5px; margin-top:5px; font-size:16px;}
+    input, textarea {width:400px; font-size:16px; font-family: courier, "courier new", monospace; margin:0 0 5px 0; padding:5px; border:1px solid #eee;}
+    select {margin:0 0 5px 0;}
+    @media (min-width:300px) and (max-width: 768px) {
+      input, textarea {width:100%;}
+      label i {display:block; width:auto; text-align:left;}
+      button {display:block; margin:0;}
+    }
+  </style>
+  
+  <script type="text/javascript">
+    // Current date - http://stackoverflow.com/a/4929629/412329
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd='0'+dd
+        } 
+
+    if(mm<10) {
+        mm='0'+mm
+        } 
+
+    today = yyyy+'-'+mm+'-'+dd;
+
+
+    function saveFormAsTextFile()
+        // Based on https://thiscouldbebetter.wordpress.com/2012/12/18/loading-editing-and-saving-a-text-file-in-html5-using-javascrip/
+        {
+        var textToSave =
+          'TID:' + document.getElementById('tid').value + '\r\n' + // =TID
+          'SID:' + document.getElementById('sid').value + '\r\n' + // =SID
+          'OT:' + document.getElementById('ot').value + '\r\n' + // =SID
+          'Gender:' + document.getElementById('gender').value + '\r\n' + // = Gender
+          'Country:' + document.getElementById('country').value + '\r\n' + // =Country
+          'SubRegion:' + document.getElementById('subregion').value + '\r\n' + // =SubRegion
+          '3DSRegion:' + document.getElementById('consoleregion').value
+
+        var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+        var fileNameToSaveAs = "trainerdata.txt";
+
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        downloadLink.href = textToSaveAsURL;
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+
+        downloadLink.click();
+        }
+
+    function destroyClickedElement(event)
+        {
+        document.body.removeChild(event.target);
+        }
+  </script>
+</head>
+
+<body>
+  <div id="page">
+    
+    <h1>Trainer Data Generator</h1>
+  
+    <label for="tid">
+      <i>TID</i> <!-- =title - input example -->
+      <input id="tid" size="40" placeholder="Enter your Trainer ID here">
+    </label>
+    
+    <br>
+    
+    <label for="sid">
+      <i>SID</i> <!-- =location - input example -->
+      <input id="sid" size="40" placeholder="Enter your Secret ID here">
+    </label>
+    
+    <input type="hidden" id="date" size="40"> <!-- =date - hidden input example (automatically populated with current date in yyyy-mm-dd format) -->
+    
+    <br>
+
+    <label for="ot">
+      <i>OT</i> <!-- =title - input example -->
+      <input id="ot" size="40" placeholder="Enter your Trainer Name here">
+    </label>
+          
+    <br>
+    
+    <label for="gender"> 
+      <i>Gender</i> <!-- =senses select menu example -->
+      <select name="gender" id="gender" size="1">
+        <option value="Touch">M</option>
+        <option value="Sound">F</option>
+      </select>
+    </label>
+    
+    <br>
+    
+    <label for="country">
+      <i>Country</i>  <!-- =tags textarea example -->
+      <input id="country" size="40" placeholder="Exact Country Name"></textarea>
+    </label>
+    
+    <br>
+    
+    <label for="subregion">
+      <i>Sub Region</i>  <!-- =content textarea example -->
+      <input id="subregion" size="40" placeholder="Sub Region within your Country"></textarea>
+    </label>
+
+    <br>
+    
+    <label for="consoleregion">
+      <i>Console Region</i>
+      <input id="consoleregion" size="40" placeholder="Console Region of your 3DS">
+    </label>
+    
+    <button onclick="saveFormAsTextFile()">
+      Save to File
+    </button>
+    
+  </div>
+</body>
+</html>

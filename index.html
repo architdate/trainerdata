@@ -82,14 +82,14 @@
     <h1>Trainer Data Generator</h1>
   
     <label for="tid">
-      <i>TID</i> <!-- =title - input example -->
+      <i>TID</i> 
       <input id="tid" size="40" placeholder="Enter your Trainer ID here">
     </label>
     
     <br>
     
     <label for="sid">
-      <i>SID</i> <!-- =location - input example -->
+      <i>SID</i> 
       <input id="sid" size="40" placeholder="Enter your Secret ID here">
     </label>
     
@@ -98,14 +98,14 @@
     <br>
 
     <label for="ot">
-      <i>OT</i> <!-- =title - input example -->
+      <i>OT</i>
       <input id="ot" size="40" placeholder="Enter your Trainer Name here">
     </label>
           
     <br>
     
     <label for="gender"> 
-      <i>Gender</i> <!-- =senses select menu example -->
+      <i>Gender</i> 
       <select name="gender" id="gender" size="1">
         <option value="M">Male</option>
         <option value="F">Female</option>
@@ -115,22 +115,29 @@
     <br>
     
     <label for="country">
-      <i>Country</i>  <!-- =tags textarea example -->
+      <i>Country</i> 
       <input id="country" size="40" placeholder="Exact Country Name"></textarea>
     </label>
     
     <br>
     
     <label for="subregion">
-      <i>Sub Region</i>  <!-- =content textarea example -->
+      <i>Sub Region</i>
       <input id="subregion" size="40" placeholder="Sub Region within your Country"></textarea>
     </label>
 
     <br>
     
-    <label for="consoleregion">
-      <i>Console Region</i>
-      <input id="consoleregion" size="40" placeholder="Console Region of your 3DS">
+    <label for="consoleregion"> 
+      <i>Console Region</i> 
+      <select name="consoleregion" id="consoleregion" size="1">
+        <option value="Japan (日本)">Japan</option>
+        <option value="Americas (NA/SA)">Americas</option>
+        <option value="Europe (EU/AU)">Europe</option>
+        <option value="China (中国大陆)">China</option>
+        <option value="Korea (한국)">Korea</option>
+        <option value="Taiwan (香港/台灣)">Taiwan</option>
+      </select>
     </label>
     
     <button onclick="saveFormAsTextFile()">

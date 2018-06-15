@@ -14,7 +14,7 @@ if(mm<10) {
 
 today = yyyy+'-'+mm+'-'+dd;
 
-function saveFormAsTextFile()
+function saveFormAsTextFile() {
 	// Based on https://thiscouldbebetter.wordpress.com/2012/12/18/loading-editing-and-saving-a-text-file-in-html5-using-javascrip/
 	var textToSave =
 	  'TID:' + document.getElementById('tid').value + '\r\n' + // =TID

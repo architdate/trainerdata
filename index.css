@@ -40,7 +40,7 @@ select {
 input.select {
 	background-color: #2E3440;
 }
-input.button {
+button {
     background-color: #7289DA;
 	border: none;
 	border-radius: 0px;

@@ -4,82 +4,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <link href="index.css" rel="stylesheet" type="text/css">
+	<script src="script.js" type="text/javascript"></script>
   <title>Trainer Data Generator</title>
-  
-  <style type="text/css" media="screen">
-    body {font-family:verdana, sans-serif; color:#666; background:#fafafa; padding:20px; text-align:center;}
-    #page {text-align:left; max-width:600px; margin:0 auto;} 
-    h1 {font-size:16px; font-weight:normal; text-align:center;}
-    label {font-size:16px;}
-    label i {font-style:normal; display:inline-block; text-align:right; width:100px;}
-    label textarea {vertical-align:top;}
-    button {margin-left:105px; padding:5px; margin-top:5px; margin-bottom:5px; font-size:16px;}
-    input, textarea {width:400px; font-size:16px; font-family: courier, "courier new", monospace; margin:0 0 5px 0; padding:5px; border:1px solid #eee;}
-    select {margin:0 0 5px 0;}
-    footer {position:absolute; bottom:0; width:100%; height:200px;}
-    @media (min-width:300px) and (max-width: 768px) {
-      input, textarea {width:100%;}
-      label i {display:block; width:auto; text-align:left;}
-      button {display:block; margin:0 auto;}
-      img {display:block; margin:5px auto;}
-    }
-  </style>
-  
-  <script type="text/javascript">
-    // Current date - http://stackoverflow.com/a/4929629/412329
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
 
-    if(dd<10) {
-        dd='0'+dd
-        } 
-
-    if(mm<10) {
-        mm='0'+mm
-        } 
-
-    today = yyyy+'-'+mm+'-'+dd;
-
-
-    function saveFormAsTextFile()
-        // Based on https://thiscouldbebetter.wordpress.com/2012/12/18/loading-editing-and-saving-a-text-file-in-html5-using-javascrip/
-        {
-        var textToSave =
-          'TID:' + document.getElementById('tid').value + '\r\n' + // =TID
-          'SID:' + document.getElementById('sid').value + '\r\n' + // =SID
-          'OT:' + document.getElementById('ot').value + '\r\n' + // =SID
-          'Gender:' + document.getElementById('gender').value + '\r\n' + // = Gender
-          'Country:' + document.getElementById('country').value + '\r\n' + // =Country
-          'SubRegion:' + document.getElementById('subregion').value + '\r\n' + // =SubRegion
-          '3DSRegion:' + document.getElementById('consoleregion').value
-
-        var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
-        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-        var fileNameToSaveAs = "trainerdata.txt";
-
-        var downloadLink = document.createElement("a");
-        downloadLink.download = fileNameToSaveAs;
-        downloadLink.innerHTML = "Download File";
-        downloadLink.href = textToSaveAsURL;
-        downloadLink.onclick = destroyClickedElement;
-        downloadLink.style.display = "none";
-        document.body.appendChild(downloadLink);
-
-        downloadLink.click();
-        }
-
-    function destroyClickedElement(event)
-        {
-        document.body.removeChild(event.target);
-        }
-  </script>
 </head>
 
 <body>
-  <div id="page">
+  <div class="page">
     
     <h1>Trainer Data Generator</h1>
   
@@ -118,14 +50,14 @@
     
     <label for="country">
       <i>Country</i> 
-      <input id="country" size="40" placeholder="Exact Country Name"></textarea>
+      <input id="country" size="40" placeholder="Exact Country Name">
     </label>
     
     <br>
     
     <label for="subregion">
       <i>Sub Region</i>
-      <input id="subregion" size="40" placeholder="Sub Region within your Country"></textarea>
+      <input id="subregion" size="40" placeholder="Sub Region within your Country">
     </label>
 
     <br>
@@ -134,7 +66,7 @@
       <i>Console Region</i> 
       <select name="consoleregion" id="consoleregion" size="1">
         <option value="Japan (日本)">Japan</option>
-        <option value="Americas (NA/SA)">Americas</option>
+        <option value="America (NA/SA)">Americas</option>
         <option value="Europe (EU/AU)">Europe</option>
         <option value="China (中国大陆)">China</option>
         <option value="Korea (한국)">Korea</option>
@@ -144,25 +76,14 @@
 
     <br>
     
-    <button onclick="saveFormAsTextFile()">
-      Download trainerdata.txt
-    </button>
-
-    <br>
-
-    <label>
-      <i>Page Hit Counter</i>
-      <img src="http://hitwebcounter.com/counter/counter.php?page=6958903&amp;style=0024&amp;nbdigits=4&amp;type=page&amp;initCount=0" title="free hits" alt="free hits" border="0">
-    </label>
-
-    <footer>
+    <input class ="button" type="button" onclick="saveFormAsTextFile()" value="Download trainerdata.txt">
+	</div>
+	<footer>
         <p>Join the Discord!</p>
         <a href="https://discord.gg/9ptDkpV">
           <img src="https://canary.discordapp.com/api/guilds/401014193211441153/widget.png?style=banner2">
         </a>
         <p>Copyright (c) 2018 Archit Date (under the MIT license)</p>
     </footer>
-    
-  </div>
 </body>
 </html>
